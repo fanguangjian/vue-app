@@ -1,0 +1,37 @@
+{
+  "id": "2658807",
+  "name": "vue-app",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11982742",
+      "name": "Home, homepage, menu",
+      "font_class": "Homehomepagemenu",
+      "unicode": "e9db",
+      "unicode_decimal": 59867
+    },
+    {
+      "icon_id": "1400854",
+      "name": "上一步",
+      "font_class": "shangyibu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "10747022",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "11215266",
+      "name": "next",
+      "font_class": "next",
+      "unicode": "e701",
+      "unicode_decimal": 59137
+    }
+  ]
+}
