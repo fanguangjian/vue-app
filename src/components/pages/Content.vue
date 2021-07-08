@@ -1,7 +1,7 @@
 <!--
  * @Author       : G.F
  * @Date         : 2021-07-07 21:56:36
- * @LastEditTime : 2021-07-08 02:33:03
+ * @LastEditTime : 2021-07-09 00:03:12
  * @LastEditors  : G.F
  * @FilePath     : /vue-app-ilume/src/components/pages/Content.vue
  * @Description  : 
@@ -12,17 +12,15 @@
         <li 
           class="item border-bottom"
           v-for="item of pageData"
-          :key="item.id">
+          :key="item.id"
+          @click="showDetail(item.id)"
+          >
            <div class="flex-container">
-              <div class="flex-item1">
+              <div class="flex-image">
                   <img :src="item.image" >
-                  <!-- <img :src="require(item.image)" /> -->
-                  <!-- <img :src="getImgUrl(item.image)"  width="100%"/> -->
-
-
               </div>
-              <div class="flex-item2">
-                  <div class="item-A">          
+              <div class="flex-text">
+                  <div class="item-text">          
                     <div>
                       <span class="name">{{item.name}}</span>
                     </div>          
@@ -32,11 +30,11 @@
                       </span>
                     </div>
                   </div>
-                  <div class="item-A">
+                  <div class="item-text">
                       <span class="title">Last known location:</span>    
                       <div class="title-info">{{item.location.name}}</div>
                   </div>
-                  <div class="item-A">
+                  <div class="item-text">
                       <span class="title">First seen in:</span>   
                       <div class="title-info">{{item.origin.name}}</div>
                   </div>          
@@ -56,15 +54,16 @@ export default {
       pageData: Array
   },
   setup(props) {
-    console.log(props.pageData);
-  
-    // console.log(pageData);
+    console.log(props.pageData);  
   },
   methods:{
-    getImgUrl(icon){
-      // return require(icon);
-      return require("@/assets/"+icon);
-    }
+    showDetail(id){
+       console.log('show detail');
+      //  this.getDetail(id);
+       this.$parent.getDetail(id);
+    },
+   
+  
   }
 }
 </script>
@@ -73,16 +72,15 @@ export default {
         display: -webkit-flex;
         display: flex;
         width: 100%;
-        // height: 250px;
         background-color: #242830;
         padding: .2rem 2rem .4rem .4rem;
     }
+    .flex-container:hover .name{
+        color:#f49804;
+    }
 
-    .flex-item1 {
-        // background-color: cornflowerblue;
+    .flex-image {
         width: 30%;
-        // height: 100px;
-        // margin: 10px;
         border-top-left-radius: .12rem;
         border-bottom-left-radius: .12rem;
         overflow:hidden;
@@ -90,13 +88,9 @@ export default {
           width:100%
         }
     }
-    .flex-item2 {
+    .flex-text {
        background-color:#3c3e45;
-      //  background-color:red;
-
         width: 60%;
-        // height: 100px;
-        // margin: 10px;
         display: flex;
         -webkit-flex-direction: column;
         flex-direction: column;
@@ -106,13 +100,11 @@ export default {
         border-bottom-right-radius: .12rem;
 
     }
-    .item-A {
-        // background-color: cornflowerblue;
+    .item-text {
         display: flex;
         justify-content: center;
         width: 80%;
         height: 33.3%;
-        // margin: .2rem 0 0 0;
         -webkit-flex-direction: column;
         flex-direction: column;
         align-items: flex-start;

@@ -1,46 +1,55 @@
-<!--
- * @Author       : G.F
- * @Date         : 2021-07-07 21:56:36
- * @LastEditTime : 2021-07-08 02:42:29
- * @LastEditors  : G.F
- * @FilePath     : /vue-app-ilume/src/components/pages/Header.vue
- * @Description  : 
--->
 <template>
   <div class="header">  
-    <div class="header-left">
-      <!-- <div class="iconfont back-icon">&#xe624;</div> -->
+    <div class="header-left">    
        <span class="iconfont icon-Homehomepagemenu"></span>
+       <span class="ilume">ilume</span>     
     </div>
     <div class="header-input">
-      <span class="iconfont icon-search"></span>
-      <input v-model="keyword" class="search-input" type="text" placeholder="Please enter name" />    
+      <span class="iconfont icon-search" ></span>
+      <input class="search-input" type="text" placeholder="Please enter name" 
+      v-model="nameValue" @keyup.enter="searchName()"/> 
     </div>
+     <div class="header-right"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Header', 
+  computed:{},
+  data(){
+    return{
+      nameValue:''
+    }
+  }, 
+  methods:{
+    searchName(){
+      // console.log(this.nameValue);
+      this.$emit('searchData', this.nameValue);
+    }, 
+  }
 }
 </script>
 <style lang="less" scoped>
- .header{
+    .header{
         display: flex;
         height: .89rem; ;
         line-height: .89rem;
-        background: cyan;
+        background:#3c3e45;
         color: #fff;
         .header-left{
+            flex: 2;
             width: .64rem;
             float: left;
-            .back-icon{
+            .ilume{
                 text-align: center;
                 font-size: .4rem;
+                font-weight: bolder;
+                padding-left:.2rem;
             } 
         }
         .header-input{
-            flex: 1;
+            flex: 4;
             height: .64rem;
             line-height: .64rem;
             margin-top: .12rem;
@@ -53,18 +62,15 @@ export default {
             justify-content: flex-start;
             .search-input{
               box-sizing: border-box;
-              // width: 100%;
-              // height: .62rem;
               padding: 0 .1rem;
-              // line-height: .62rem;
-              text-align: center;
               border-radius: .06rem;
               color: #666;
-            }
-     
-             
+            } 
+        }
+         .header-right{  
+              flex: 1;
 
-        }   
+         }
 
     } 
    
